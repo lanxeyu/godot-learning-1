@@ -1,11 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://bakauitsmbpy6"]
+[gd_scene load_steps=17 format=3 uid="uid://bakauitsmbpy6"]
 
 [ext_resource type="PackedScene" uid="uid://c4vjmjonxwfm0" path="res://scenes/player.tscn" id="1_1lv0d"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_fgakv"]
 [ext_resource type="Texture2D" uid="uid://gg34ip3m6lxi" path="res://assets/sprites/world_tileset.png" id="2_4w4qj"]
+[ext_resource type="FontFile" uid="uid://ba2rdb8tbg8nq" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_efim5"]
 [ext_resource type="PackedScene" uid="uid://c4ht8he670pjp" path="res://scenes/platform.tscn" id="3_srsjm"]
+[ext_resource type="Script" path="res://scenes/LabelScore.gd" id="4_7ir6q"]
 [ext_resource type="PackedScene" uid="uid://dg7elkywm7lma" path="res://scenes/coin.tscn" id="4_jeriv"]
 [ext_resource type="PackedScene" uid="uid://bvb2lhoe3aiwv" path="res://scenes/killzone.tscn" id="5_uyvmg"]
 [ext_resource type="PackedScene" uid="uid://dqocsn2jkg3nd" path="res://scenes/enemy.tscn" id="6_4hd53"]
+[ext_resource type="FontFile" uid="uid://ha3ffju5h5j5" path="res://assets/fonts/PixelOperator8.ttf" id="7_er5i6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3utme"]
 texture = ExtResource("2_4w4qj")
@@ -453,6 +457,21 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_fgakv")
+
+[node name="LabelScore" type="Label" parent="GameManager"]
+offset_left = 133.0
+offset_top = 19.0
+offset_right = 189.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_efim5")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("4_7ir6q")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hvtoj")
 format = 2
@@ -496,3 +515,15 @@ position = Vector2(-56, 9)
 
 [node name="Enemy" parent="." instance=ExtResource("6_4hd53")]
 position = Vector2(-120, 16)
+
+[node name="LabelsInLevel" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="LabelsInLevel"]
+offset_left = -106.0
+offset_top = -90.0
+offset_right = 128.0
+offset_bottom = -67.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_er5i6")
+theme_override_font_sizes/font_size = 8
+text = "A learning project by Lanxe Yu"
